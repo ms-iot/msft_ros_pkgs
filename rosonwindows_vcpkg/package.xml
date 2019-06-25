@@ -1,0 +1,12 @@
+<package>
+  <name>rosonwindows_vcpkg</name>
+  <version>0.0.1</version>
+  <description>The package adds access to Vcpkg from ROS on Windows environment.</description>
+  <maintainer email="seanyen@microsoft.com">Sean Yen</maintainer>
+  <license>MIT</license>
+
+  <build_depend>vcpkg</build_depend>
+  <run_depend>vcpkg</run_depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
