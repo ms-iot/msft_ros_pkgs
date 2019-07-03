@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rosonwindows_vcpkg)
+project(msft_ros_vcpkg)
 find_package(catkin REQUIRED)
 
 catkin_package()
@@ -22,7 +22,7 @@ endif()
 
 set(
   hooks
-  "rosonwindows_vcpkg"
+  "msft_ros_vcpkg"
 )
 if(CMAKE_HOST_UNIX)
   set(shell "sh")

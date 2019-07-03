@@ -1,13 +1,13 @@
 <package format="2">
-  <name>rosonwindows_pkgs</name>
+  <name>msft_ros_pkgs</name>
   <version>0.0.1</version>
-  <description>Libraries of rosonwindows_pkgs</description>
+  <description>Libraries of msft_ros_pkgs</description>
   <maintainer email="seanyen@microsoft.com">Sean Yen</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <exec_depend>rosonwindows_vcpkg</exec_depend>
+  <exec_depend>msft_ros_vcpkg</exec_depend>
 
   <export>
     <metapackage/>

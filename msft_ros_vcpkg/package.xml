@@ -1,5 +1,5 @@
 <package>
-  <name>rosonwindows_vcpkg</name>
+  <name>msft_ros_vcpkg</name>
   <version>0.0.1</version>
   <description>The package adds access to Vcpkg from ROS on Windows environment.</description>
   <maintainer email="seanyen@microsoft.com">Sean Yen</maintainer>
