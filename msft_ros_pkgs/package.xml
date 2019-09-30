@@ -8,6 +8,7 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <exec_depend>msft_ros_vcpkg</exec_depend>
+  <exec_depend>msft_ros_env</exec_depend>
 
   <export>
     <metapackage/>
