@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>msft_ros2_env</name>
+  <version>1.0.0</version>
+  <description>
+    Components to activate external environments for ROS 2
+  </description>
+  <maintainer email="seanyen@microsoft.com">Sean Yen</maintainer>
+  <license file="LICENSE">MIT</license>
+
+  <build_depend>ament_cmake_core</build_depend>
+  <build_depend>ament_package</build_depend>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
