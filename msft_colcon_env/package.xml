@@ -1,0 +1,9 @@
+<package>
+  <name>msft_colcon_env</name>
+  <version>0.0.1</version>
+  <description>The package adds the catkin environment prefix in a colcon setting.</description>
+  <maintainer email="seanyen@microsoft.com">Sean Yen</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
