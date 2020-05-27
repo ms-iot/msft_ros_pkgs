@@ -1,0 +1,2 @@
+REM generated from msft_ros_env/env-hooks/msft_colcon_env.bat.in
+@EXTERNAL_PREFIX_CONTENT@

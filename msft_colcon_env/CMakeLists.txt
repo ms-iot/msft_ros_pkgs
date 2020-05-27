@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(msft_colcon_env)
+find_package(catkin REQUIRED)
+
+catkin_package()
+
+get_filename_component(PYTHONHOME "${PYTHON_EXECUTABLE}" DIRECTORY)
+file(TO_NATIVE_PATH "${PYTHONHOME}" PYTHONHOME)
+
+# Bootstrap Python Runtime Location
+set(EXTERNAL_PREFIX_CONTENT "")
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PATH=%PATH:${PYTHONHOME}\\Scripts;=%\"")
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PATH=%PATH:${PYTHONHOME};=%\"")
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PATH=${PYTHONHOME};%PATH%\"")
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PATH=${PYTHONHOME}\\Scripts;%PATH%\"")
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PYTHONHOME=${PYTHONHOME}\"")
+
+# Bootstrap CMAKE_PREFIX_PATH
+foreach(_PREFIX $ENV{CMAKE_PREFIX_PATH})
+    file(TO_NATIVE_PATH "${_PREFIX}" NATIVE_PREFIX)
+    file(TO_CMAKE_PATH "${_PREFIX}" CMAKE_PREFIX)
+    set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PATH=%PATH:${NATIVE_PREFIX}\\bin;=%\"")
+    set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"PATH=${NATIVE_PREFIX}\\bin;%PATH%\"")
+    set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"CMAKE_PREFIX_PATH=%CMAKE_PREFIX_PATH:${CMAKE_PREFIX};=%\"")
+    set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nset \"CMAKE_PREFIX_PATH=${CMAKE_PREFIX};%CMAKE_PREFIX_PATH%\"")
+endforeach()
+
+set(
+  hooks
+  "msft_colcon_qt"
+  "msft_colcon_env"
+)
+if(CMAKE_HOST_UNIX)
+  set(shell "sh")
+else()
+  set(shell "bat")
+endif()
+foreach(hook ${hooks})
+  catkin_add_env_hooks("${hook}" SHELLS ${shell} DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
+endforeach()
