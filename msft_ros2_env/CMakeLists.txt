@@ -23,6 +23,12 @@ foreach(_PREFIX $ENV{CMAKE_PREFIX_PATH})
     set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nprepend-non-duplicate;AMENT_PREFIX_PATH;${NATIVE_PREFIX}")
 endforeach()
 
+# Bootstrap Python DLLs
+# Since Python3.7, the Python started to vendor openssl DLLs.
+# It is important to make sure we keep that set to be loaded first at runtime.
+# We add it to the front of the search path to ensure the order.
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nprepend-non-duplicate;PATH;${PYTHONHOME}\\DLLs")
+
 ament_environment_hooks("env-hooks/external_prefix.dsv.in")
 
 ament_package()
