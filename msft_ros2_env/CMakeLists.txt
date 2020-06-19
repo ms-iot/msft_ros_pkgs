@@ -4,6 +4,9 @@ project(msft_ros2_env NONE)
 # This is inspired by ros_workspace project.
 # https://github.com/ros2/ros_workspace
 
+# If you edit this file for the first time, it's recommended to read this.
+# https://colcon.readthedocs.io/en/released/developer/environment.html
+
 find_package(ament_cmake_core REQUIRED)
 
 get_filename_component(PYTHONHOME "${PYTHON_EXECUTABLE}" DIRECTORY)
