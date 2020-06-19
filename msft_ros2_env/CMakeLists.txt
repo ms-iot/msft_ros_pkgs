@@ -29,6 +29,11 @@ endforeach()
 # We add it to the front of the search path to ensure the order.
 set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nprepend-non-duplicate;PATH;${PYTHONHOME}\\DLLs")
 
+# Bootstrap QT platform plugin DLLs
+# TODO: To find what package vendor the platform DLLs and move the logic over.
+file(TO_NATIVE_PATH "${CMAKE_INSTALL_PREFIX}" _NATIVE_INSTALL_PREFIX)
+set(EXTERNAL_PREFIX_CONTENT "${EXTERNAL_PREFIX_CONTENT}\nprepend-non-duplicate;QT_QPA_PLATFORM_PLUGIN_PATH;${_NATIVE_INSTALL_PREFIX}\\bin\\platforms")
+
 ament_environment_hooks("env-hooks/external_prefix.dsv.in")
 
 ament_package()
